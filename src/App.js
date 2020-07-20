@@ -5,6 +5,7 @@ import Login from "./components/sessions/Login";
 import Navbar from "./components/Navbar";
 import Signup from "./components/sessions/Signup";
 import api from "./services/api";
+import ItemCreate from "./components/admin/ItemCreate";
 
 class App extends Component {
   constructor(props) {
@@ -52,7 +53,18 @@ class App extends Component {
               return <Login {...props} handleLogin={this.handleLogin} />;
             }}
           />
-          <Route path="/signup" component={Signup} />
+          <Route
+            path="/signup"
+            render={(props) => {
+              return <Signup {...props} handleLogin={this.handleLogin} />;
+            }}
+          />
+          <Route
+            path="/new_menu"
+            render={(props) => {
+              return <ItemCreate {...props} handleLogin={this.handleLogin} />;
+            }}
+          />
         </div>
       </div>
     );
