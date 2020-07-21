@@ -1,7 +1,7 @@
 import React from "react";
 import api from "../services/api";
-import ItemCard from "./Item Card";
-class HomeContainer extends React.Component {
+import ItemContainer from "./ItemContainer";
+class EditMenu extends React.Component {
   constructor(props) {
     super(props);
 
@@ -20,10 +20,10 @@ class HomeContainer extends React.Component {
     console.log("Home user", this.props);
     return (
       <div>
-        <ItemCard></ItemCard>
+        <ItemContainer items={this.state.items} />
       </div>
     );
   }
 }
 
-export default HomeContainer;
+export default EditMenu;

@@ -1,20 +1,33 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
-// import NavigationLink from "./NavigationLink";
+// import { NavLink } from "react-router-dom";
+import NavigationLink from "./NavigationLink";
+import { Nav } from "react-bootstrap";
 
-const Navbar = (props) => {
+const Navbar = ({ handleLogout, loggedInStatus }) => {
   return (
-    <nav
-      className="navbar navbar-expand-lg navbar-light"
-      style={{ background: "#FFE973" }}
-    >
-      <div className="collapse navbar-collapse">
-        <NavLink to="/" exact>
+    <Nav variant="pills" defaultActiveKey="/home">
+      <NavigationLink link="/" text="Home" />
+      <NavigationLink link="/signup" text="Signup" />
+      <NavigationLink link="/login" text="Login" />
+
+      {loggedInStatus ? (
+        <>
+          <NavigationLink link="/new_menu" text="New Menu" />
+          <NavigationLink link="/menues" text="See Menues" />
+
+          <NavigationLink
+            link="/login"
+            text="Logout"
+            handleLogout={handleLogout}
+          />
+        </>
+      ) : null}
+      {/* <NavLink to="/" exact>
           Home
         </NavLink>
-        {props.currentUser.email ? (
+        {loggedInStatus ? (
           <a className="item">
-            <div onClick={props.handleLogout}> Sign Out </div>
+            <div onClick={handleLogout}> Sign Out </div>
           </a>
         ) : (
           <NavLink to="/login" exact>
@@ -27,8 +40,10 @@ const Navbar = (props) => {
         <NavLink to="/new_menu" exact>
           New Menu
         </NavLink>
-      </div>
-    </nav>
+        <NavLink to="/menues" exact>
+          Menues
+        </NavLink> */}
+    </Nav>
   );
 };
 

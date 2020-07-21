@@ -6,6 +6,8 @@ import Navbar from "./components/Navbar";
 import Signup from "./components/sessions/Signup";
 import api from "./services/api";
 import ItemCreate from "./components/admin/ItemCreate";
+import EditMenu from "./components/EditMenu";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 class App extends Component {
   constructor(props) {
@@ -48,45 +50,53 @@ class App extends Component {
           loggedInStatus={this.state.isLoggedIn}
           handleLogout={this.handleLogout}
         />
-        <div>
-          <Route
-            exact={true}
-            path="/"
-            render={(props) => {
-              return (
-                <Home
-                  {...props}
-                  loggedInStatus={this.state.isLoggedIn}
-                  handleLogin={this.handleLogin}
-                />
-              );
-            }}
-          />
-          <Route
-            path="/login"
-            render={(props) => {
-              return (
-                <Login
-                  {...props}
-                  loggedInStatus={this.state.isLoggedIn}
-                  handleLogin={this.handleLogin}
-                />
-              );
-            }}
-          />
-          <Route
-            path="/signup"
-            render={(props) => {
-              return <Signup {...props} handleLogin={this.handleLogin} />;
-            }}
-          />
-          <Route
-            path="/new_menu"
-            render={(props) => {
-              return <ItemCreate {...props} handleLogin={this.handleLogin} />;
-            }}
-          />
-        </div>
+        <Switch>
+          <div>
+            <Route
+              exact={true}
+              path="/"
+              render={(props) => {
+                return (
+                  <Home
+                    {...props}
+                    loggedInStatus={this.state.isLoggedIn}
+                    handleLogin={this.handleLogin}
+                  />
+                );
+              }}
+            />
+            <Route
+              path="/login"
+              render={(props) => {
+                return (
+                  <Login
+                    {...props}
+                    loggedInStatus={this.state.isLoggedIn}
+                    handleLogin={this.handleLogin}
+                  />
+                );
+              }}
+            />
+            <Route
+              path="/signup"
+              render={(props) => {
+                return <Signup {...props} handleLogin={this.handleLogin} />;
+              }}
+            />
+            <Route
+              path="/new_menu"
+              render={(props) => {
+                return <ItemCreate {...props} handleLogin={this.handleLogin} />;
+              }}
+            />
+            <Route
+              path="/menues"
+              render={(props) => {
+                return <EditMenu {...props} handleLogin={this.handleLogin} />;
+              }}
+            />
+          </div>
+        </Switch>
       </div>
     );
   }
