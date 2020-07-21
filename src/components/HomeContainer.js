@@ -1,25 +1,26 @@
 import React from "react";
 import api from "../services/api";
-import ItemCard from "./ItemCard";
+import ItemContainer from "./ItemContainer";
 class HomeContainer extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      users: [],
+      items: [],
     };
   }
 
   componentDidMount() {
     api.items.getItems().then((items) => {
-      this.setState({ users: items });
+      this.setState({ items: items });
     });
   }
 
   render() {
+    console.log("Home user", this.props);
     return (
       <div>
-        <ItemCard users={this.state.users} />
+        <ItemContainer items={this.state.items} />
       </div>
     );
   }
