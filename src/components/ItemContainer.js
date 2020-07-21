@@ -1,5 +1,5 @@
 import React from "react";
-import ItemCard from "./ItemCard";
+import ItemsTable from "./ItemsTable";
 
 class ItemContainer extends React.Component {
   render() {
@@ -8,9 +8,7 @@ class ItemContainer extends React.Component {
     return (
       <div className="items_cards">
         <div className="row">
-          {itemsArray.map((item) => (
-            <ItemCard key={item.id} item={item} />
-          ))}
+          <ItemsTable item={itemsArray} />
         </div>
       </div>
     );
