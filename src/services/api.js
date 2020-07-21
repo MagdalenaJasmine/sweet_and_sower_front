@@ -1,4 +1,4 @@
-const API_ROOT = "http://localhost:3000/";
+const API_ROOT = "http://localhost:3000";
 const token = localStorage.getItem("token");
 
 const headers = {
@@ -6,14 +6,12 @@ const headers = {
   Accepts: "application/json",
   Authorization: token,
 };
-const authHeaders = {
-  "X-User-Email": "maggiec@gmail.com",
-  "X-User-Token": "FViJQmfn_pBEW5231HW6",
-  "Content-Type": "application/json; charset=utf-8",
+const fileHeaders = {
+  Authorization: token,
 };
 
 const getItems = () => {
-  return fetch(`${API_ROOT}/users`, { headers: headers }).then((res) =>
+  return fetch(`${API_ROOT}/items`, { headers: headers }).then((res) =>
     res.json()
   );
 };
@@ -32,6 +30,14 @@ const getCurrentUser = () => {
   }).then((res) => res.json());
 };
 
+const uploadFile = (data) => {
+  return fetch(`${API_ROOT}/items`, {
+    method: "POST",
+    headers: fileHeaders,
+    body: JSON.stringify(data),
+  }).then((res) => res.json);
+};
+
 export default {
   auth: {
     login: login,
@@ -39,5 +45,8 @@ export default {
   },
   items: {
     getItems,
+  },
+  itemsPost: {
+    uploadFile: uploadFile,
   },
 };

@@ -10,7 +10,10 @@ import ItemCreate from "./components/admin/ItemCreate";
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { auth: { currentUser: {} } };
+    this.state = {
+      auth: { currentUser: {} },
+      isLoggedIn: false,
+    };
   }
 
   componentDidMount() {
@@ -20,37 +23,55 @@ class App extends Component {
       api.auth.getCurrentUser().then((user) => {
         console.log("CURRENT USER", user);
         const currentUser = { currentUser: user };
-        this.setState({ auth: currentUser });
+        this.setState({ auth: currentUser, isLoggedIn: true });
       });
     }
   }
   handleLogin = (user) => {
     const currentUser = { currentUser: user };
     localStorage.setItem("token", user.authentication_token);
-    // localStorage.setItem("token", user.issue_token);
 
-    this.setState({ auth: currentUser });
+    this.setState({ auth: currentUser, isLoggedIn: true });
   };
 
   handleLogout = (user) => {
-    // localStorage.removeItem("token");
     this.setState({ auth: { currentUser: {} } });
     localStorage.removeItem("token");
   };
   render() {
+    // console.log("loggedin", this.state.isLoggedIn);
     const { auth } = this.state;
     return (
       <div className="App">
         <Navbar
           currentUser={auth.currentUser}
+          loggedInStatus={this.state.isLoggedIn}
           handleLogout={this.handleLogout}
         />
         <div>
-          <Route exact={true} path="/" component={Home} />
+          <Route
+            exact={true}
+            path="/"
+            render={(props) => {
+              return (
+                <Home
+                  {...props}
+                  loggedInStatus={this.state.isLoggedIn}
+                  handleLogin={this.handleLogin}
+                />
+              );
+            }}
+          />
           <Route
             path="/login"
             render={(props) => {
-              return <Login {...props} handleLogin={this.handleLogin} />;
+              return (
+                <Login
+                  {...props}
+                  loggedInStatus={this.state.isLoggedIn}
+                  handleLogin={this.handleLogin}
+                />
+              );
             }}
           />
           <Route
