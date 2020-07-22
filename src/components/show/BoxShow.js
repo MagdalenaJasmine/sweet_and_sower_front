@@ -31,7 +31,7 @@ class BoxShow extends React.Component {
           <Card.Title>{box.name} </Card.Title>
           <Card.Text>
             <div>
-              What's included in this week's box:
+              Included in This Box:
               <div>{box.description}</div>
             </div>
             <div>Delivery Date: {box.delivery_date} </div>
