@@ -8,6 +8,8 @@ import api from "./services/api";
 import ItemCreate from "./components/admin/ItemCreate";
 import EditMenu from "./components/EditMenu";
 import "bootstrap/dist/css/bootstrap.min.css";
+import MealShow from "./components/show/MealShow.js";
+import BoxShow from "./components/show/BoxShow";
 
 class App extends Component {
   constructor(props) {
@@ -40,6 +42,7 @@ class App extends Component {
     this.setState({ auth: { currentUser: {} } });
     localStorage.removeItem("token");
   };
+
   render() {
     // console.log("loggedin", this.state.isLoggedIn);
     const { auth } = this.state;
@@ -93,6 +96,18 @@ class App extends Component {
               path="/menues"
               render={(props) => {
                 return <EditMenu {...props} handleLogin={this.handleLogin} />;
+              }}
+            />
+            <Route
+              path="/meal"
+              render={(props) => {
+                return <MealShow {...props} handleLogin={this.handleLogin} />;
+              }}
+            />
+            <Route
+              path="/market_box"
+              render={(props) => {
+                return <BoxShow {...props} handleLogin={this.handleLogin} />;
               }}
             />
           </div>

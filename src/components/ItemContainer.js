@@ -6,9 +6,11 @@ class ItemContainer extends React.Component {
     const itemsArray = this.props.items;
 
     return (
-      <div className="items_cards">
-        <div className="row">
-          <ItemsTable item={itemsArray} />
+      <div className="header_text">
+        <div className="items_cards">
+          <div className="row">
+            <ItemsTable item={itemsArray} />
+          </div>
         </div>
       </div>
     );

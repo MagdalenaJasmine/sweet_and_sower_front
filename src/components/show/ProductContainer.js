@@ -1,7 +1,6 @@
 import React from "react";
 import api from "../services/api";
-import ItemCard from "./ItemCard";
-class HomeContainer extends React.Component {
+class ProductContainer extends React.Component {
   constructor(props) {
     super(props);
 
@@ -25,4 +24,4 @@ class HomeContainer extends React.Component {
   }
 }
 
-export default HomeContainer;
+export default ProductContainer;
