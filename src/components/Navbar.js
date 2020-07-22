@@ -5,44 +5,24 @@ import { Nav } from "react-bootstrap";
 
 const Navbar = ({ handleLogout, loggedInStatus }) => {
   return (
-    <Nav variant="pills" defaultActiveKey="/home">
-      <NavigationLink link="/" text="Home" />
-      <NavigationLink link="/signup" text="Signup" />
-      <NavigationLink link="/login" text="Login" />
+    <Nav className="nav" defaultActiveKey="/home">
+      <NavigationLink class="nav_link" link="/" text="Home" />
+      <NavigationLink class="nav_link" link="/signup" text="Signup" />
+      <NavigationLink class="nav_link" link="/login" text="Login" />
 
       {loggedInStatus ? (
         <>
-          <NavigationLink link="/new_menu" text="New Menu" />
-          <NavigationLink link="/menues" text="See Menues" />
+          <NavigationLink class="nav_link" link="/new_menu" text="New Menu" />
+          <NavigationLink class="nav_link" link="/menues" text="See Menues" />
 
           <NavigationLink
+            class="nav_link"
             link="/login"
             text="Logout"
             handleLogout={handleLogout}
           />
         </>
       ) : null}
-      {/* <NavLink to="/" exact>
-          Home
-        </NavLink>
-        {loggedInStatus ? (
-          <a className="item">
-            <div onClick={handleLogout}> Sign Out </div>
-          </a>
-        ) : (
-          <NavLink to="/login" exact>
-            Login
-          </NavLink>
-        )}
-        <NavLink to="/signup" exact>
-          Signup
-        </NavLink>
-        <NavLink to="/new_menu" exact>
-          New Menu
-        </NavLink>
-        <NavLink to="/menues" exact>
-          Menues
-        </NavLink> */}
     </Nav>
   );
 };
