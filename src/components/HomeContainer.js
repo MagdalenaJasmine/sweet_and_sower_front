@@ -18,8 +18,12 @@ class HomeContainer extends React.Component {
 
   render() {
     return (
-      <div>
-        <ItemCard items={this.state.items}></ItemCard>
+      <div className="header_text">
+        {" "}
+        This Week's Offerings
+        <div>
+          <ItemCard items={this.state.items}></ItemCard>
+        </div>
       </div>
     );
   }

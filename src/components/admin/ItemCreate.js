@@ -25,7 +25,7 @@ class ItemCreate extends React.Component {
     };
 
     fetch(`${API_ROOT}/items`, options).then((resp) => {
-      this.props.history.push("/");
+      this.props.history.push("/menues");
     });
   }
 
