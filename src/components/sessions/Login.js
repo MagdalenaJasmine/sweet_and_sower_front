@@ -37,7 +37,9 @@ class Login extends React.Component {
     const { email, password } = this.state;
     return (
       <div>
-        {this.state.error ? <h1> Try again </h1> : null}
+        {this.state.error ? (
+          <h1> Oops something went wrong. Please try again </h1>
+        ) : null}
         <form className="form" onSubmit={this.handleSubmit}>
           <h1>Login</h1>
           <div>

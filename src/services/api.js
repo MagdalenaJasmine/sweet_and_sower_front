@@ -38,6 +38,21 @@ const uploadFile = (data) => {
   }).then((res) => res.json);
 };
 
+// const createUser = (data) => {
+//   console.log("fetch Data", data);
+//   return fetch(`${API_ROOT}/users`, {
+//     method: "POST",
+//     headers: {
+//       user: {
+//         email: "theo@gmail.com",
+//         password: "66666666",
+//         password_confirmation: "66666666",
+//       },
+//     },
+//     body: JSON.stringify(data),
+//   });
+// };
+
 export default {
   auth: {
     login: login,
@@ -49,4 +64,7 @@ export default {
   itemsPost: {
     uploadFile: uploadFile,
   },
+  // userPost: {
+  //   createUser: createUser,
+  // },
 };

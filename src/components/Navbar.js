@@ -7,8 +7,6 @@ const Navbar = ({ handleLogout, loggedInStatus }) => {
   return (
     <Nav className="nav" defaultActiveKey="/home">
       <NavigationLink class="nav_link" link="/" text="Home" />
-      <NavigationLink class="nav_link" link="/signup" text="Signup" />
-      <NavigationLink class="nav_link" link="/login" text="Login" />
 
       {loggedInStatus ? (
         <>
@@ -22,7 +20,12 @@ const Navbar = ({ handleLogout, loggedInStatus }) => {
             handleLogout={handleLogout}
           />
         </>
-      ) : null}
+      ) : (
+        <>
+          <NavigationLink class="nav_link" link="/signup" text="Signup" />
+          <NavigationLink class="nav_link" link="/login" text="Login" />
+        </>
+      )}
     </Nav>
   );
 };
