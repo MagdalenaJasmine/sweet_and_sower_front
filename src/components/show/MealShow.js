@@ -1,6 +1,8 @@
 import React from "react";
 import api from "../../services/api";
 import { CardGroup, Button, Card } from "react-bootstrap";
+import { connect } from "react-redux";
+import { addBasket } from "../../actions.js/addAction";
 
 class MealShow extends React.Component {
   constructor(props) {
@@ -58,7 +60,10 @@ class MealShow extends React.Component {
             <div>Price</div>
           </Card.Text>
         </Card.Body>
-        <Button className="button" href="/meal">
+        <Button
+          className="button"
+          onClick={() => this.props.addBasket("drop-off meal")}
+        >
           Add to Cart
         </Button>
       </Card>
@@ -66,4 +71,4 @@ class MealShow extends React.Component {
   }
 }
 
-export default MealShow;
+export default connect(null, { addBasket })(MealShow);

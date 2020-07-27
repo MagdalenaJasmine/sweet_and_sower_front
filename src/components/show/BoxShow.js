@@ -1,6 +1,8 @@
 import React from "react";
 import api from "../../services/api";
 import { CardGroup, Button, Card } from "react-bootstrap";
+import { connect } from "react-redux";
+import { addBasket } from "../../actions.js/addAction";
 
 class BoxShow extends React.Component {
   constructor(props) {
@@ -18,9 +20,10 @@ class BoxShow extends React.Component {
 
   render() {
     const itemsArray = this.state.items;
-    let boxes = itemsArray.filter(
-      (item) => item.product_type === "market box "
-    );
+    let boxes = itemsArray.filter((item) => item.product_type === "market box");
+    console.log("ITEMS", this.state.items);
+    console.log("ITEMS ARRAY", itemsArray);
+    console.log("BOXES", boxes);
     return boxes.map((box) => (
       <Card border="secondary" style={{ width: "18rem" }}>
         <Card.Img
@@ -38,7 +41,10 @@ class BoxShow extends React.Component {
             <div>Price: ${box.price}.00</div>
           </Card.Text>
         </Card.Body>
-        <Button className="button" href="/meal">
+        <Button
+          className="button"
+          onClick={() => this.props.addBasket(box.name)}
+        >
           Add to Cart
         </Button>
       </Card>
@@ -46,4 +52,4 @@ class BoxShow extends React.Component {
   }
 }
 
-export default BoxShow;
+export default connect(null, { addBasket })(BoxShow);

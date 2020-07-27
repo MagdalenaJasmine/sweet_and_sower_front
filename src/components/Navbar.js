@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 // import { NavLink } from "react-router-dom";
 import NavigationLink from "./NavigationLink";
 import { Nav } from "react-bootstrap";
+import { connect } from "react-redux";
+import { getNumbers } from "../actions.js/getAction";
 
-const Navbar = ({ handleLogout, loggedInStatus }) => {
+const Navbar = ({ handleLogout, loggedInStatus, cartProps }) => {
+  console.log("CartProps", cartProps);
+
+  useEffect(() => {
+    getNumbers();
+  }, []);
+
   return (
     <Nav className="nav" defaultActiveKey="/home">
       <NavigationLink class="nav_link" link="/" text="Home" />
+      <NavigationLink class="nav_link" link="/cart" text="Cart" />
+      <span>{cartProps.cartNumbers}</span>
 
       {loggedInStatus ? (
         <>
@@ -30,4 +40,7 @@ const Navbar = ({ handleLogout, loggedInStatus }) => {
   );
 };
 
-export default Navbar;
+const mapStateToProps = (state) => ({
+  cartProps: state.cartState,
+});
+export default connect(mapStateToProps, { getNumbers })(Navbar);
