@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import { getNumbers } from "../actions.js/getAction";
 
 const Navbar = ({ handleLogout, loggedInStatus, cartProps }) => {
-  console.log("CartProps", cartProps);
+  console.log("Navbar CartProps", cartProps);
 
   useEffect(() => {
     getNumbers();

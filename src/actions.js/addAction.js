@@ -1,12 +1,11 @@
-import { ADD_PRODUCT_BASKET } from "./types";
+import { GET_NUMBERS_BASKET } from "./types";
 
-export const addBasket = (itemName) => {
+export const addBasket = (item) => {
   return (dispatch) => {
-    console.log("adding to basket");
-    console.log("product:", itemName);
+    console.log("product:", item);
     dispatch({
-      type: ADD_PRODUCT_BASKET,
-      payload: itemName,
+      type: GET_NUMBERS_BASKET,
+      payload: item,
     });
   };
 };

@@ -8,7 +8,6 @@ import api from "./services/api";
 import ItemCreate from "./components/admin/ItemCreate";
 import EditMenu from "./components/EditMenu";
 import "bootstrap/dist/css/bootstrap.min.css";
-import MealShow from "./components/show/MealShow.js";
 import BoxShow from "./components/show/BoxShow";
 import Cart from "./components/Cart";
 import { Provider } from "react-redux";
@@ -20,10 +19,14 @@ class App extends Component {
     this.state = {
       auth: { currentUser: {} },
       isLoggedIn: false,
+      items: [],
     };
   }
 
   componentDidMount() {
+    api.items.getItems().then((items) => {
+      this.setState({ items: items });
+    });
     const token = localStorage.getItem("token");
 
     if (token) {
@@ -68,6 +71,7 @@ class App extends Component {
                       {...props}
                       loggedInStatus={this.state.isLoggedIn}
                       handleLogin={this.handleLogin}
+                      items={this.state.items}
                     />
                   );
                 }}
@@ -101,21 +105,39 @@ class App extends Component {
               <Route
                 path="/menues"
                 render={(props) => {
-                  return <EditMenu {...props} handleLogin={this.handleLogin} />;
+                  return (
+                    <EditMenu
+                      {...props}
+                      handleLogin={this.handleLogin}
+                      items={this.state.items}
+                    />
+                  );
                 }}
               />
               <Route
                 path="/meal"
                 render={(props) => {
-                  return <MealShow {...props} handleLogin={this.handleLogin} />;
+                  return (
+                    <BoxShow
+                      {...props}
+                      handleLogin={this.handleLogin}
+                      items={this.state.items}
+                    />
+                  );
                 }}
               />
-              <Route
+              {/* <Route
                 path="/market_box"
                 render={(props) => {
-                  return <BoxShow {...props} handleLogin={this.handleLogin} />;
+                  return (
+                    <BoxShow
+                      {...props}
+                      handleLogin={this.handleLogin}
+                      items={this.state.items}
+                    />
+                  );
                 }}
-              />
+              /> */}
               <Route
                 path="/cart"
                 render={(props) => {

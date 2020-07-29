@@ -1,28 +1,18 @@
 import React from "react";
 import api from "../services/api";
 import ItemCard from "./ItemCard";
+import { Button } from "react-bootstrap";
 class HomeContainer extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      items: [],
-    };
-  }
-
-  componentDidMount() {
-    api.items.getItems().then((items) => {
-      this.setState({ items: items });
-    });
-  }
-
   render() {
     return (
       <div className="header_text">
         {" "}
-        This Week's Offerings
+        What We Offer:
         <div>
-          <ItemCard items={this.state.items}></ItemCard>
+          <ItemCard></ItemCard>
+          <Button className="button" href="/meal">
+            View This Week's Offerings
+          </Button>
         </div>
       </div>
     );
