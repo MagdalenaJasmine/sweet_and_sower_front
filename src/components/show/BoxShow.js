@@ -2,14 +2,30 @@ import React from "react";
 import api from "../../services/api";
 import { CardGroup, Button, Card } from "react-bootstrap";
 import { connect } from "react-redux";
-import { addBasket } from "../../actions.js/addAction";
+import { addBasket, postToInitializeCart } from "../../actions.js/addAction";
 
 class BoxShow extends React.Component {
+  handleClick = (e) => {
+    e.preventDefault();
+    const { dispatch } = this.props;
+    console.log("click props", this.props);
+    console.log("event", e.target.id);
+
+    const itemsArray = this.props.items;
+    console.log("ITEMS ARRAY", itemsArray);
+    const itemToUse = itemsArray.find(
+      (item) => item.id === parseInt(e.target.id)
+    );
+    console.log("ITEM", itemToUse);
+
+    dispatch(addBasket(itemToUse));
+    dispatch(postToInitializeCart(itemToUse, { action_type: "add_item" }));
+  };
+
   render() {
     const itemsArray = this.props.items;
     // let meals = itemsArray.filter((item) => item.product_type === "market box");
     console.log("ITEMS", this.props.items);
-    console.log("ITEMS ARRAY", itemsArray);
     return itemsArray.map((item) => (
       <Card border="secondary" style={{ width: "18rem" }}>
         <Card.Img
@@ -27,7 +43,7 @@ class BoxShow extends React.Component {
             <div>Price: ${item.price}.00</div>
           </Card.Text>
         </Card.Body>
-        <Button className="button" onClick={() => this.props.addBasket(item)}>
+        <Button className="button" id={item.id} onClick={this.handleClick}>
           Add to Cart
         </Button>
       </Card>
@@ -35,4 +51,10 @@ class BoxShow extends React.Component {
   }
 }
 
-export default connect(null, { addBasket })(BoxShow);
+const mapDispatchToProps = (dispatch) => ({
+  addBasket,
+  postToInitializeCart,
+  dispatch,
+});
+
+export default connect(null, mapDispatchToProps)(BoxShow);
