@@ -35,4 +35,8 @@ class BoxShow extends React.Component {
   }
 }
 
+const mapDispatchToProps = (dispatch) => {
+  return {};
+};
+
 export default connect(null, { addBasket })(BoxShow);
