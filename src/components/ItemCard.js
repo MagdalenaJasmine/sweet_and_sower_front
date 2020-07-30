@@ -12,7 +12,7 @@ import {
 const ItemCard = (props) => {
   return (
     <CardDeck>
-      <Card border="secondary" style={{ width: "25rem" }}>
+      <Card style={{ width: "25rem" }}>
         <Card.Img
           variant="top"
           src="https://techcrunch.com/wp-content/uploads/2017/04/plated_panko_crusted_salmon_recipe.jpg?w=430&h=230&crop=1"
@@ -28,7 +28,7 @@ const ItemCard = (props) => {
           </Card.Text>
         </Card.Body>
       </Card>
-      <Card border="secondary" style={{ width: "18rem" }}>
+      <Card style={{ width: "18rem" }}>
         <Card.Img
           variant="top"
           src="https://www.farmfreshri.org/wp-content/uploads/2017/10/FFRI_VeggieBox-featured.jpg"

@@ -1,6 +1,6 @@
 import React from "react";
 import api from "../../services/api";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Container } from "react-bootstrap";
 const API_ROOT = "http://localhost:3000";
 
 class Signup extends React.Component {
@@ -62,7 +62,7 @@ class Signup extends React.Component {
       address,
     } = this.state;
     return (
-      <div>
+      <Container className="card_text">
         {this.state.error ? <h1> Please try again</h1> : null}
         <Form onSubmit={this.handleSubmit}>
           <Form.Group controlId="formBasicName">
@@ -104,9 +104,9 @@ class Signup extends React.Component {
           </Form.Group>
 
           <Form.Group controlId="formBasicPasswordConfirmation">
-            <Form.Label>Password</Form.Label>
+            <Form.Label> Confirm Password</Form.Label>
             <Form.Control
-              type="password_confirmation"
+              type="password"
               name="password_confirmation"
               placeholder="password_confirmation"
               id="inputPasswordConfirmation"
@@ -154,7 +154,7 @@ class Signup extends React.Component {
             Signup
           </Button>
         </Form>
-      </div>
+      </Container>
     );
   }
 }

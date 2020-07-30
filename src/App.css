@@ -83,7 +83,7 @@
   font-size: 36px;
   line-height: 53px;
 
-  color: #000000;
+  color: #254f35;
 }
 
 .card_text {
@@ -91,6 +91,18 @@
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
+  line-height: 21px;
+
+  /* Black */
+
+  color: #000000;
+}
+
+.card_header {
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
   line-height: 21px;
 
   /* Black */
@@ -108,18 +120,17 @@
   color: #000000;
 }
 .header_text {
-  position: absolute;
-  width: 560px;
+  /* width: 560px;
   height: 53px;
   left: 412px;
-  top: 186px;
+  top: 186px; */
 
   font-family: Sacramento;
   font-style: normal;
   font-weight: normal;
   font-size: 36px;
-  line-height: 53px;
-  text-align: center;
+  /* line-height: 53px; */
+  /* text-align: center; */
 }
 
 .error {

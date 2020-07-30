@@ -5,19 +5,22 @@ import { Button, Container, Row, Col } from "react-bootstrap";
 class HomeContainer extends React.Component {
   render() {
     return (
-      <Container fluid>
+      <Container>
+        <Row>
+          <Col md={{ span: 6, offset: 4 }}>
+            <h3 className="header_text">What We Offer:</h3>
+          </Col>
+        </Row>
         <Row>
           <Col>
-            <div className="header_text">
-              {" "}
-              What We Offer:
-              <div>
-                <ItemCard></ItemCard>
-                <Button className="button" href="/meal">
-                  View This Week's Offerings
-                </Button>
-              </div>
-            </div>
+            <ItemCard></ItemCard>
+          </Col>
+        </Row>
+        <Row>
+          <Col md={{ span: 6, offset: 4 }}>
+            <Button className="button" href="/meal">
+              View This Week's Offerings
+            </Button>
           </Col>
         </Row>
       </Container>

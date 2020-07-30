@@ -1,10 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 import CartCard from "./CartCard";
-import { Button } from "react-bootstrap";
+import { Button, Container, Col } from "react-bootstrap";
 
 function Cart({ cartProps, history }) {
   let itemsInCart = cartProps.cartItems;
+  let itemPrices = itemsInCart.map((item) => item.price_in_cents);
+  console.log("ITEMSINCART", itemPrices);
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -25,19 +27,28 @@ function Cart({ cartProps, history }) {
   };
 
   return (
-    <div>
-      Cart
+    <Container fluid>
+      <Col md={{ span: 6, offset: 4 }} className="header_text">
+        Please Review Your Order{" "}
+      </Col>
       {itemsInCart.map((item) => (
         <div>
-          <div>
+          <Col md={{ span: 6, offset: 4 }} xs="2">
             <CartCard item={item}></CartCard>
-          </div>
+          </Col>
         </div>
       ))}
-      <Button className="button" onClick={handleClick}>
-        Submit Your Order
-      </Button>
-    </div>
+      <Col md={{ span: 6, offset: 4 }}>
+        <Button className="button" onClick={handleClick}>
+          Submit Your Order
+        </Button>
+      </Col>
+      <Col md={{ span: 6, offset: 4 }}>
+        <div>
+          Total Items ({itemsInCart.length}) ${}
+        </div>
+      </Col>
+    </Container>
   );
 }
 
