@@ -13,6 +13,7 @@ import Cart from "./components/Cart";
 import { Provider } from "react-redux";
 import store from "./store.js";
 import CartSubmit from "./components/CartSubmit";
+import "./index.css";
 
 class App extends Component {
   constructor(props) {

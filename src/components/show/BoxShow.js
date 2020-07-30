@@ -35,8 +35,10 @@ class BoxShow extends React.Component {
                     <Card.Title className="card_header">
                       About this Item:
                     </Card.Title>
-                    <Card.Text>{item.description}</Card.Text>
-                    <Card.Footer>
+                    <Card.Text className="card_text">
+                      {item.description}
+                    </Card.Text>
+                    <Card.Footer className="card_text">
                       <div>Delivery Date: {item.delivery_date}</div>
                       <div>Price: ${item.price_in_cents / 100}</div>
                     </Card.Footer>

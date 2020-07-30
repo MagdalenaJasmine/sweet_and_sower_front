@@ -47,7 +47,7 @@ class Login extends React.Component {
         <Form className="form" onSubmit={this.handleSubmit}>
           <Form.Label className="header">Please Login</Form.Label>
           <div>
-            <Form.Group controlId="formBasicEmail">
+            <Form.Group className="card_text" controlId="formBasicEmail">
               <Form.Label>Email</Form.Label>
               <Form.Control
                 type="text"
@@ -60,7 +60,7 @@ class Login extends React.Component {
             </Form.Group>
           </div>
           <div>
-            <Form.Group controlId="formBasicPassword">
+            <Form.Group className="card_text" controlId="formBasicPassword">
               <Form.Label>Password</Form.Label>
               <Form.Control
                 type="password"

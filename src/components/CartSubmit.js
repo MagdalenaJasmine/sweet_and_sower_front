@@ -16,7 +16,7 @@ const CartSubmit = ({ cartProps }) => {
           <div>94110</div>
         </div>
         {cartProps.cartItems.map((item) => (
-          <Card>
+          <Card className="card_text">
             <Card.Title> Item: {item.name}</Card.Title>
             <Card.Body>
               <Card.Text>

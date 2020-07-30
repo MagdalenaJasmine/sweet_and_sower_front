@@ -62,7 +62,7 @@
 } */
 .nav-link {
   color: #254f35;
-  font-size: 20px;
+  font-size: 30px;
   top: 18.28%;
   bottom: 37.63%;
   font-family: Sacramento;
@@ -150,4 +150,5 @@
 }
 .button {
   background-color: #254f35;
+  font-family: Raleway;
 }

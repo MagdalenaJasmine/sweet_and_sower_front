@@ -13,7 +13,7 @@ const ItemsTable = (props) => {
       </Row>
       <Row>
         <Table className="mt-4 ml-7 mr-7 mb-4" striped bordered hover>
-          <thead>
+          <thead className="card_text">
             <tr>
               <th>Item</th>
               <th>Item Type</th>
@@ -25,7 +25,7 @@ const ItemsTable = (props) => {
               <th></th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="card_text">
             {items.map((item) => (
               <tr key={item.id}>
                 <td>{item.id}</td>

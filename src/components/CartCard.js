@@ -23,7 +23,7 @@ function CartCard({ item, itemQuantity, dispatch }) {
     <div>
       <Card id={item.id}>
         <Card.Body>
-          <Card.Header className="card_header">{item.name} </Card.Header>
+          <Card.Header className="header">{item.name} </Card.Header>
           <Card.Text className="card_text ">
             <div>
               <div>Delivery Date: {item.delivery_date} </div>

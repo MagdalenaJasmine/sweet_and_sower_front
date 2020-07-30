@@ -50,7 +50,11 @@ class ItemCreate extends React.Component {
                 />
               </div>
               <br />
-              <button type="button" onClick={(e) => this.handleUpload(e)}>
+              <button
+                type="button"
+                className="button"
+                onClick={(e) => this.handleUpload(e)}
+              >
                 {" "}
                 Upload File{" "}
               </button>

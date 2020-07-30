@@ -44,7 +44,7 @@ function Cart({ cartProps, history }) {
         </Button>
       </Col>
       <Col md={{ span: 6, offset: 4 }}>
-        <div>
+        <div className="card_text">
           Total Items ({itemsInCart.length}) ${}
         </div>
       </Col>
