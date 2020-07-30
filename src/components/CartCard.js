@@ -34,7 +34,7 @@ function CartCard({ item, itemQuantity, dispatch }) {
                     {" "}
                     +{" "}
                   </Button>
-                  Quantity: {item.quantity}
+                  Servings: {item.quantity}
                   <Button className="button" onClick={handleDecreaseClick}>
                     {" "}
                     -{" "}

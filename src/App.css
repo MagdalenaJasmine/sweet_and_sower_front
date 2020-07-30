@@ -1,17 +1,111 @@
-/* .body_font {
+.form {
   position: absolute;
-  width: 560px;
+  width: 200.48px;
   height: 53px;
-  left: 412px;
-  top: 186px;
-} */
-
-.nav {
-  background-color: #f4ebde;
+  left: 468px;
+  top: 250px;
 }
 
-.navlink {
-  color: #254f35 !important;
+/* navbar logos and text  */
+.nav {
+  background-color: #f4ebde;
+  position: flex;
+
+  height: 93px;
+  left: 0px;
+  right: 0px;
+  top: 50px;
+}
+.logo {
+  position: absolute;
+  left: 37.47%;
+  right: 37.4%;
+  top: 0%;
+  bottom: 0%;
+  font-family: Sacramento;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 64px;
+  line-height: 93px;
+  text-align: center;
+}
+.home {
+  position: absolute;
+  left: 85%;
+  right: 15%;
+  /* top: 18.28%;
+  bottom: 37.63%; */
+}
+
+/* .cart {
+  position: absolute;
+  left: 73.94%;
+  right: 22.39%;
+  top: 18.28%;
+  bottom: 37.63%;
+}
+
+.loginIcon {
+  position: absolute;
+  left: 79.64%;
+  right: 17.4%;
+  top: 18.28%;
+  bottom: 37.59%;
+}
+
+.logout {
+  position: absolute;
+  left: 79.64%;
+  right: 17.4%;
+  top: 18.28%;
+  bottom: 37.59%;
+} */
+.nav-link {
+  color: #254f35;
+  font-size: 20px;
+  top: 18.28%;
+  bottom: 37.63%;
+  font-family: Sacramento;
+}
+
+/* .navItem {
+  display: inline-block;
+  padding: 0 25px 1px 25px;
+  font-size: 16px;
+} */
+
+/* text types  */
+
+.card_title {
+  font-family: Sacramento;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 53px;
+
+  color: #000000;
+}
+
+.card_text {
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+
+  /* Black */
+
+  color: #000000;
+}
+
+.header {
+  font-family: Sacramento;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 53px;
+
+  color: #000000;
 }
 .header_text {
   position: absolute;
@@ -26,6 +120,22 @@
   font-size: 36px;
   line-height: 53px;
   text-align: center;
+}
+
+.error {
+  position: absolute;
+  width: 560px;
+  height: 53px;
+  left: 412px;
+  top: 186px;
+
+  font-family: Sacramento;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 53px;
+  text-align: center;
+  color: #b90000;
 }
 .button {
   background-color: #254f35;
