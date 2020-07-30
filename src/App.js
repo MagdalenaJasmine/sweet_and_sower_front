@@ -18,10 +18,27 @@ import "./index.css";
 class App extends Component {
   constructor(props) {
     super(props);
+    const token = localStorage.getItem("token");
+    const currentUser = {};
+
+    if (token) {
+      api.auth.getCurrentUser().then((user) => {
+        console.log("CURRENT USER", user.admin);
+        const currentUser = { currentUser: user };
+        this.setState({ auth: currentUser, isLoggedIn: true });
+        if (user.admin == true) {
+          this.setState({ isAdmin: true });
+        } else if (user.admin == false) {
+          this.setState({ isAdmin: false });
+        }
+      });
+    }
+
     this.state = {
-      auth: { currentUser: {} },
+      auth: { currentUser: currentUser },
       isLoggedIn: false,
       items: [],
+      isAdmin: false,
     };
   }
 
@@ -29,16 +46,22 @@ class App extends Component {
     api.items.getItems().then((items) => {
       this.setState({ items: items });
     });
-    const token = localStorage.getItem("token");
+    // const token = localStorage.getItem("token");
 
-    if (token) {
-      api.auth.getCurrentUser().then((user) => {
-        console.log("CURRENT USER", user);
-        const currentUser = { currentUser: user };
-        this.setState({ auth: currentUser, isLoggedIn: true });
-      });
-    }
+    // if (token) {
+    //   api.auth.getCurrentUser().then((user) => {
+    //     console.log("CURRENT USER", user.admin);
+    //     const currentUser = { currentUser: user };
+    //     this.setState({ auth: currentUser, isLoggedIn: true });
+    //     if (user.admin == true) {
+    //       this.setState({ isAdmin: true });
+    //     } else if (user.admin == false) {
+    //       this.setState({ isAdmin: false });
+    //     }
+    //   });
+    // }
   }
+
   handleLogin = (user) => {
     const currentUser = { currentUser: user };
     localStorage.setItem("token", user.authentication_token);
@@ -61,6 +84,7 @@ class App extends Component {
             currentUser={auth.currentUser}
             loggedInStatus={this.state.isLoggedIn}
             handleLogout={this.handleLogout}
+            adminStatus={this.state.isAdmin}
           />
           <Switch>
             <div>
@@ -74,6 +98,7 @@ class App extends Component {
                       loggedInStatus={this.state.isLoggedIn}
                       handleLogin={this.handleLogin}
                       items={this.state.items}
+                      adminStatus={this.state.isAdmin}
                     />
                   );
                 }}
@@ -86,6 +111,8 @@ class App extends Component {
                       {...props}
                       loggedInStatus={this.state.isLoggedIn}
                       handleLogin={this.handleLogin}
+                      handleLogout={this.handleLogout}
+                      adminStatus={this.state.isAdmin}
                     />
                   );
                 }}
@@ -93,14 +120,24 @@ class App extends Component {
               <Route
                 path="/signup"
                 render={(props) => {
-                  return <Signup {...props} handleLogin={this.handleLogin} />;
+                  return (
+                    <Signup
+                      {...props}
+                      handleLogin={this.handleLogin}
+                      adminStatus={this.state.isAdmin}
+                    />
+                  );
                 }}
               />
               <Route
                 path="/new_menu"
                 render={(props) => {
                   return (
-                    <ItemCreate {...props} handleLogin={this.handleLogin} />
+                    <ItemCreate
+                      {...props}
+                      handleLogin={this.handleLogin}
+                      adminStatus={this.state.isAdmin}
+                    />
                   );
                 }}
               />
@@ -112,6 +149,7 @@ class App extends Component {
                       {...props}
                       handleLogin={this.handleLogin}
                       items={this.state.items}
+                      adminStatus={this.state.isAdmin}
                     />
                   );
                 }}
@@ -124,6 +162,7 @@ class App extends Component {
                       {...props}
                       handleLogin={this.handleLogin}
                       items={this.state.items}
+                      adminStatus={this.state.isAdmin}
                     />
                   );
                 }}
@@ -131,14 +170,24 @@ class App extends Component {
               <Route
                 path="/cart"
                 render={(props) => {
-                  return <Cart {...props} handleLogin={this.handleLogin} />;
+                  return (
+                    <Cart
+                      {...props}
+                      handleLogin={this.handleLogin}
+                      adminStatus={this.state.isAdmin}
+                    />
+                  );
                 }}
               />
               <Route
                 path="/complete"
                 render={(props) => {
                   return (
-                    <CartSubmit {...props} handleLogin={this.handleLogin} />
+                    <CartSubmit
+                      {...props}
+                      handleLogin={this.handleLogin}
+                      adminStatus={this.state.isAdmin}
+                    />
                   );
                 }}
               />

@@ -10,9 +10,7 @@ import cart from "../images/Group.png";
 import home from "../images/Home.png";
 import login from "../images/login.png";
 
-const Navbar = ({ handleLogout, loggedInStatus, cartProps }) => {
-  console.log("Navbar CartProps", cartProps);
-
+const Navbar = ({ handleLogout, loggedInStatus, cartProps, adminStatus }) => {
   useEffect(() => {
     getNumbers();
   }, []);
@@ -30,8 +28,20 @@ const Navbar = ({ handleLogout, loggedInStatus, cartProps }) => {
 
       {loggedInStatus ? (
         <>
-          <NavigationLink class="nav_link" link="/new_menu" text="New Menu" />
-          <NavigationLink class="nav_link" link="/menues" text="See Menues" />
+          {adminStatus ? (
+            <>
+              <NavigationLink
+                class="nav_link"
+                link="/new_menu"
+                text="Add Items"
+              />
+              <NavigationLink
+                class="nav_link"
+                link="/menues"
+                text="All Items"
+              />
+            </>
+          ) : null}
 
           <NavigationLink
             className="logout"

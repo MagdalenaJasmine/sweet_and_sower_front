@@ -2,8 +2,23 @@ import React from "react";
 import { connect } from "react-redux";
 import { Container, Card } from "react-bootstrap";
 
-const CartSubmit = ({ cartProps }) => {
-  console.log("CARTSUBMIT PROPS", cartProps);
+const CartSubmit = ({ cartProps, total }) => {
+  let itemsInCart = cartProps.cartItems;
+  let itemPrices = itemsInCart.map((item) => item.price_in_cents);
+  let itemQuantities = itemsInCart.map((item) => item.quantity);
+
+  function totalPrice() {
+    const l = itemPrices.length;
+    let sum = 0;
+
+    for (var i = 0; i < l; i++) {
+      sum += itemPrices[i] * itemQuantities[i];
+    }
+
+    sum = sum / 100;
+
+    return sum;
+  }
 
   return (
     <Container>
@@ -17,7 +32,10 @@ const CartSubmit = ({ cartProps }) => {
         </div>
         {cartProps.cartItems.map((item) => (
           <Card className="card_text">
-            <Card.Title> Item: {item.name}</Card.Title>
+            <Card.Title>
+              <div>Item: {item.name}</div>
+              <div>Total: {totalPrice()}</div>
+            </Card.Title>
             <Card.Body>
               <Card.Text>
                 <div>Servings: {item.quantity}</div>
