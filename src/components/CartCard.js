@@ -23,8 +23,8 @@ function CartCard({ item, itemQuantity, dispatch }) {
     <div>
       <Card id={item.id}>
         <Card.Body>
-          <Card.Title>{item.name} </Card.Title>
-          <Card.Text>
+          <Card.Header className="header">{item.name} </Card.Header>
+          <Card.Text className="card_text ">
             <div>
               <div>Delivery Date: {item.delivery_date} </div>
               <div>Price: ${price}</div>
@@ -34,7 +34,7 @@ function CartCard({ item, itemQuantity, dispatch }) {
                     {" "}
                     +{" "}
                   </Button>
-                  Quantity: {item.quantity}
+                  Servings: {item.quantity}
                   <Button className="button" onClick={handleDecreaseClick}>
                     {" "}
                     -{" "}

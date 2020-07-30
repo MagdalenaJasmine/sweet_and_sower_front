@@ -1,4 +1,5 @@
 import React from "react";
+import { Container, Card } from "react-bootstrap";
 
 const API_ROOT = "http://localhost:3000";
 const token = localStorage.getItem("token");
@@ -31,27 +32,36 @@ class ItemCreate extends React.Component {
 
   render() {
     return (
-      <div className="upload">
-        <h1>Upload Menu Items</h1>
+      <Container>
+        <Card>
+          <div className="upload">
+            <h1 className="card_title">Upload Menu Items</h1>
 
-        <form>
-          <div className="">
-            <div>
-              <label>Please Select a File:</label>
-            </div>
-            <input
-              type="file"
-              name="file"
-              onChange={(e) => this.handleFile(e)}
-            />
+            <form>
+              <div className="">
+                <div>
+                  <label className="card_text">Please Select a File:</label>
+                </div>
+                <input
+                  className="card_text"
+                  type="file"
+                  name="file"
+                  onChange={(e) => this.handleFile(e)}
+                />
+              </div>
+              <br />
+              <button
+                type="button"
+                className="button"
+                onClick={(e) => this.handleUpload(e)}
+              >
+                {" "}
+                Upload File{" "}
+              </button>
+            </form>
           </div>
-          <br />
-          <button type="button" onClick={(e) => this.handleUpload(e)}>
-            {" "}
-            Upload File{" "}
-          </button>
-        </form>
-      </div>
+        </Card>
+      </Container>
     );
   }
 }

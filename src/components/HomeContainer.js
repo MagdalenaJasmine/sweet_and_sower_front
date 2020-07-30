@@ -1,20 +1,29 @@
 import React from "react";
 import api from "../services/api";
 import ItemCard from "./ItemCard";
-import { Button } from "react-bootstrap";
+import { Button, Container, Row, Col } from "react-bootstrap";
 class HomeContainer extends React.Component {
   render() {
     return (
-      <div className="header_text">
-        {" "}
-        What We Offer:
-        <div>
-          <ItemCard></ItemCard>
-          <Button className="button" href="/meal">
-            View This Week's Offerings
-          </Button>
-        </div>
-      </div>
+      <Container>
+        <Row>
+          <Col md={{ span: 6, offset: 4 }}>
+            <h3 className="header_text">What We Offer:</h3>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <ItemCard></ItemCard>
+          </Col>
+        </Row>
+        <Row>
+          <Col md={{ span: 6, offset: 4 }}>
+            <Button className="button" href="/meal">
+              View This Week's Offerings
+            </Button>
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }

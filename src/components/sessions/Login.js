@@ -1,5 +1,6 @@
 import React from "react";
 import api from "../../services/api";
+import { Button, Form } from "react-bootstrap";
 
 class Login extends React.Component {
   constructor() {
@@ -38,34 +39,43 @@ class Login extends React.Component {
     return (
       <div>
         {this.state.error ? (
-          <h1> Oops something went wrong. Please try again </h1>
+          <h1 className="error">
+            {" "}
+            Oops something went wrong. Please try again{" "}
+          </h1>
         ) : null}
-        <form className="form" onSubmit={this.handleSubmit}>
-          <h1>Login</h1>
+        <Form className="form" onSubmit={this.handleSubmit}>
+          <Form.Label className="header">Please Login</Form.Label>
           <div>
-            <label>Email</label>
-            <input
-              type="text"
-              name="email"
-              placeholder="Email"
-              id="inputEmail"
-              value={email}
-              onChange={this.handleChange}
-            />
+            <Form.Group className="card_text" controlId="formBasicEmail">
+              <Form.Label>Email</Form.Label>
+              <Form.Control
+                type="text"
+                name="email"
+                placeholder="Email"
+                id="inputEmail"
+                value={email}
+                onChange={this.handleChange}
+              />
+            </Form.Group>
           </div>
           <div>
-            <label>Password</label>
-            <input
-              type="password"
-              name="password"
-              placeholder="Password"
-              id="inputPassword"
-              value={password}
-              onChange={this.handleChange}
-            />
+            <Form.Group className="card_text" controlId="formBasicPassword">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type="password"
+                name="password"
+                placeholder="Password"
+                id="inputPassword"
+                value={password}
+                onChange={this.handleChange}
+              />
+            </Form.Group>
           </div>
-          <input type="submit" value="Login" />
-        </form>
+          <Button type="submit" value="Login" className="button">
+            Login
+          </Button>
+        </Form>
       </div>
     );
   }

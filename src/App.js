@@ -12,6 +12,8 @@ import BoxShow from "./components/show/BoxShow";
 import Cart from "./components/Cart";
 import { Provider } from "react-redux";
 import store from "./store.js";
+import CartSubmit from "./components/CartSubmit";
+import "./index.css";
 
 class App extends Component {
   constructor(props) {
@@ -126,22 +128,18 @@ class App extends Component {
                   );
                 }}
               />
-              {/* <Route
-                path="/market_box"
-                render={(props) => {
-                  return (
-                    <BoxShow
-                      {...props}
-                      handleLogin={this.handleLogin}
-                      items={this.state.items}
-                    />
-                  );
-                }}
-              /> */}
               <Route
                 path="/cart"
                 render={(props) => {
                   return <Cart {...props} handleLogin={this.handleLogin} />;
+                }}
+              />
+              <Route
+                path="/complete"
+                render={(props) => {
+                  return (
+                    <CartSubmit {...props} handleLogin={this.handleLogin} />
+                  );
                 }}
               />
             </div>
